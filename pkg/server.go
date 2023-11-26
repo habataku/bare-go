@@ -6,6 +6,6 @@ import (
 )
 
 func HandleBareChi(directory string, chiRouter *chi.Mux) *chi.Mux {
-    router := routes.Router(directory, chiRouter)
+    router := routes.ChiRouter(directory, chiRouter)
     return router
 }

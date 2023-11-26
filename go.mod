@@ -1,4 +1,4 @@
-module github.com/Ruby-Network/bare-go
+module github.com/ruby-network/bare-go
 
 go 1.21.3
 
