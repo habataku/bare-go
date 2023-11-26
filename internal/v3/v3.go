@@ -9,6 +9,8 @@ import (
 )
 
 func Handler(method string, userAgent string, w http.ResponseWriter, r *http.Request, headers http.Header) {
+    verify := verifyHeaders(headers)
+    if verify != nil { w.Write([]byte(verify.Error())) }
     xBareUrl := headers.Get("X-Bare-Url")
     _, err := url.ParseRequestURI(xBareUrl)
     if err != nil { 
