@@ -1,7 +1,7 @@
 package main
 
 import ( 
-    "github.com/Ruby-Network/bare-go/internal/cli"
+    "github.com/ruby-network/bare-go/internal/cli"
 )
 
 func main() { 
