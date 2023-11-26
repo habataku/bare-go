@@ -18,7 +18,7 @@ make all
 ```
 - To run:
 ```bash
-./bare-server
+./bare-server start
 ```
 
 #### Docker 
@@ -59,6 +59,6 @@ make docker-compose-up
 
 - [ ] V3 implementation
 - [ ] Websocket Support
-- [ ] CLI
+- [x] CLI
 - [ ] Installable in your own project
 - [ ] Older versions of the spec
