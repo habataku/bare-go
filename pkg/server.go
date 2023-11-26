@@ -5,7 +5,7 @@ import (
     "github.com/Ruby-Network/bare-go/internal/routes"
 )
 
-func CreateBare(directory string) *chi.Mux {
-    router := routes.Router(directory)
+func HandleBare(directory string, chiRouter *chi.Mux) *chi.Mux {
+    router := routes.Router(directory, chiRouter)
     return router
 }
