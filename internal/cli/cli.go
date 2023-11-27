@@ -2,9 +2,6 @@ package cli
 
 import (
     "github.com/spf13/cobra"
-    //tea "github.com/charmbracelet/bubbletea"
-    //"github.com/charmbracelet/lipgloss"
-    //"fmt"
     "os"
 )
 
