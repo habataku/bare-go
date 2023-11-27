@@ -9,3 +9,8 @@ func HandleBareChi(directory string, chiRouter *chi.Mux) *chi.Mux {
     router := routes.ChiRouter(directory, chiRouter)
     return router
 }
+
+func HandleBareHttp(directory string, router *http.ServeMux) http.Handler {
+    router = routes.NetHttp(directory, router)
+    return router
+}
