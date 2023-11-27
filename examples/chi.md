@@ -18,7 +18,7 @@ import (
 )
 
 func main() {
-    router := bare.HandleBare("/bare/", chi.NewRouter())
+    router := bare.HandleBareChi("/bare/", chi.NewRouter())
     router.Get("/", func(w http.ResponseWriter, r *http.Request) {
         w.Write([]byte("Hello World!"))
     })
