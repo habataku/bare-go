@@ -1,4 +1,4 @@
-package bare_go
+package bare_go_chi
 
 
 import (
