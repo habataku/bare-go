@@ -2,33 +2,29 @@ package utils
 
 import (
     "runtime"
-    "fmt"
+    "encoding/json"
 )
 
 type Maintainer struct {
-    email string
-    website string
+    Email string `json:"email"`
+    Website string `json:"website"`
 }
 
 type Project struct {
-    name string
-    description string
-    email string
-    website string
-    repository string
-    version string
-}
-
-type Versions struct {
-    versions []string
+    Name string `json:"name"`
+    Description string `json:"description"`
+    Email string `json:"email"`
+    Website string `json:"website"`
+    Repository string `json:"repository"`
+    Version string `json:"version"`
 }
 
 type Response struct {
-    versions Versions
-    language string
-    memoryUsage uint64
-    maintainer Maintainer
-    project Project
+    Versions []string `json:"versions"`
+    Language string `json:"language"`
+    MemoryUsage uint64 `json:"memoryUsage"`
+    Maintainer Maintainer `json:"maintainer"`
+    Project Project `json:"project"`
 }
 
 func calcMem() uint64 {
@@ -37,19 +33,24 @@ func calcMem() uint64 {
     return m.Alloc / 1024 / 1024
 }
 
-func GetJson() string {
-    jsonResp := `{
-        "versions": ["v3"],
-        "language": "Go",
-        "memoryUsage": ` + fmt.Sprint(calcMem()) + `,
-        "project": {
-            "name": "bare-go",
-            "description": "A Bare Server in GoLang",
-            "email": "support@rubynetwork.tech",
-            "website": "https://rubynetwork.tech",
-            "repository": "https://github.com/ruby-network/bare-go",
-            "version": "v0.0.1"
-        }
-    }`
-    return jsonResp
+func GetJson() []byte {
+    jsonResp := Response{
+        Versions: []string{"v3"},
+        Language: "Go",
+        MemoryUsage: calcMem(),
+        Maintainer: Maintainer{
+            Email: "support@rubynetwork.tech",
+            Website: "https://rubynetwork.tech",
+        },
+        Project: Project{
+            Name: "bare-go",
+            Description: "A Bare Server in GoLang",
+            Email: "support@rubynetwork.tech",
+            Website: "https://rubynetwork.tech",
+            Repository: "httos://github.com/ruby-network/bare-go",
+            Version: "v0.0.1",
+        },
+    }
+    prettyJson, _ := json.MarshalIndent(jsonResp, "", "  ")
+    return prettyJson
 }
