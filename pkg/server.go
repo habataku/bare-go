@@ -11,8 +11,7 @@ func HandleBareChi(directory string, chiRouter *chi.Mux) *chi.Mux {
     return router
 }
 
-func HandleBareHttp(directory string) http.Handler {
-    mux := http.NewServeMux()
+func HandleBareHttp(directory string, router *http.ServeMux) *http.ServeMux {
     router = routes.NetHttp(directory, router)
     return router
 }

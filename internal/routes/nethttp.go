@@ -9,7 +9,7 @@ import (
     "github.com/ruby-network/bare-go/internal/v3"
 )
 
-func NetHttp(directory string, router *http.ServeMux) http.Handler {
+func NetHttp(directory string, router *http.ServeMux) *http.ServeMux {
     cors := cors.New(cors.Options{
         AllowedOrigins: []string{"*"},
         AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
@@ -17,6 +17,7 @@ func NetHttp(directory string, router *http.ServeMux) http.Handler {
         ExposedHeaders: []string{"*"},
         MaxAge: 300,
     })
+
     router.HandleFunc(directory, func(w http.ResponseWriter, r *http.Request) {
         e := utils.GetJson()
         w.Header().Set("Content-Type", "application/json")
@@ -35,6 +36,5 @@ func NetHttp(directory string, router *http.ServeMux) http.Handler {
         v3.Handler(method, userAgent, w, r, headers)
     })
 
-    handler := cors.Handler(router)
-    return handler
+    return router
 }
