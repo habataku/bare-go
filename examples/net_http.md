@@ -17,7 +17,7 @@ import (
 )
 
 func main() {
-    router := bare.HandleBareHttp("/bare/", http.NewServeMux())
+    router := bare.HandleBareHttp("/bare/")
     router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
         w.Write([]byte("Hello World"))
     })
