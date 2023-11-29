@@ -38,7 +38,7 @@ And navigate to http://localhost:8080/bare/
 import (
     "net/http"
     "fmt"
-    bare "github.com/ruby-network/bare-go/pkg"
+    bare "github.com/ruby-network/bare-go/pkg/http"
     "github.com/rs/cors"
 )
 
@@ -49,7 +49,7 @@ func main() {
         AllowedHeaders: []string{"*"},
         ExposedHeaders: []string{"*"},
     })
-    router := bare.HandleBareHttp("/bare/", http.NewServeMux())
+    router := bare.HandleBare("/bare/", http.NewServeMux())
     router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
         w.Write([]byte("Hello World"))
     })
