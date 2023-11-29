@@ -14,11 +14,11 @@ import (
     "github.com/go-chi/chi/v5"
     "net/http"
     "fmt"
-    bare "github.com/ruby-network/bare-go/pkg"
+    bare "github.com/ruby-network/bare-go/pkg/chi"
 )
 
 func main() {
-    router := bare.HandleBareChi("/bare/", chi.NewRouter())
+    router := bare.HandleBare("/bare/", chi.NewRouter())
     router.Get("/", func(w http.ResponseWriter, r *http.Request) {
         w.Write([]byte("Hello World!"))
     })
